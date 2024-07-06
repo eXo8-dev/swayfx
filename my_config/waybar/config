@@ -1,0 +1,78 @@
+{
+	"layer": "bottom",
+	"position": "top",
+	"height": 30,
+	"width": 1010,
+	"margin-top": 5,
+
+	"modules-left": ["custom/menu","sway/workspaces","sway/window","custom/wf-recorder"],
+	"modules-center": ["clock"],
+	"modules-right": [ "tray", "pulseaudio", "sway/language", "custom/power"],
+	"custom/menu": {
+        "format": "",
+        "on-click": "exec wofi --show drun -I -c ~/.script/wofi/config -s ~/.script/wofi/style.css",
+        "tooltip": false
+    },
+	"sway/window": {
+		"format": "{app_id}",
+		"max-length": 50,
+		"rewrite": {
+		},
+		"tooltip": false,
+	},
+
+	"sway/workspaces": {
+	"disable-scroll": false,
+	"all-outputs": true,
+	"format": "{icon}",
+	"tooltip": false
+	},
+
+	"tray": {
+	"icon-size": 16,
+	"spacing": 10,
+	"tooltip": false
+	},
+
+	"pulseaudio": {
+	"scroll-step": 1,
+    "format": "{icon} {volume}%",
+    "format-icons": {
+        "default": ["", "", ""]
+    },
+	"on-click": "pavucontrol",
+    "tooltip": false,
+    "scroll-up": "exec pactl set-sink-volume alsa_output.pci-0000_00_1b.0.analog-stereo.6 +1%",
+    "scroll-down": "exec pactl set-sink-volume alsa_output.pci-0000_00_1b.0.analog-stereo.6 -1%"
+	},
+
+	"sway/language": {
+		"format": " {}",
+		"on-click": "swaymsg input type:keyboard xkb_switch_layout next",
+		"tooltip": false
+	},
+
+	"clock": {
+	"format": " {:%I:%M %p} ",
+    "format-alt": " {:%a, %d %b} ",
+
+	"tooltip": false
+	},
+
+	"custom/power": {
+	"format": "{icon}",
+	"format-icons": {"default": [""]},
+	"on-click": "~/.script/power.sh",
+	"tooltip": false
+	},
+	"custom/wf-recorder": {
+         "interval": "once",
+         "return-type": "json",
+         "format": "{}",
+         "tooltip-format": "{tooltip}",
+         "exec": "echo '{\"class\": \"recording\",\"text\":\"\",\"tooltip\":\"press $mod+Esc to stop recording\"}'",
+         "exec-if": "pgrep wf-recorder",
+         "on-click": "killall -s SIGINT wf-recorder",
+         "signal": 8
+    }
+}

@@ -1,0 +1,68 @@
+* {
+    border-radius: 20px;
+    font-family: JetBrainsMono, Symbols Nerd Font;
+    font-weight: 600;
+    font-size: 12px;
+}
+
+@define-color bg #e6e6e6;
+@define-color fg #292828;
+@define-color gr #363738;
+@define-color bg2 #f0f0f0;
+@define-color blue #51a2da;
+
+
+window#waybar {
+	background-color: @bg;
+	color: @bg;
+}
+
+#workspaces button {
+    padding: 0px 5px;
+    margin: 3px 5px;
+    background-color: @bg2;
+    color: @gr;
+}
+#workspaces button:hover {
+    background-color: @bg;
+    color: @fg;
+}
+#workspaces button.focused {
+    background-color: @bg2;
+    color: @fg;
+}
+#workspaces button.urgent {
+    background-color: #eb4d4b;
+}
+
+#custom-menu {
+    color: @blue;
+    background-color: @fg;
+    padding: 0px 5px;
+    margin: 5px 15px;
+}
+
+#window,
+#tray,
+#language,
+#pulseaudio,
+#clock {
+    padding: 0 10px;
+    margin: 5 6px;
+    color: @fg;
+    background-color: @bg2;
+}
+
+#custom-power {
+    color: @bg;
+    background-color: @fg;
+    padding: 0px 7px;
+    margin: 5px 20px;
+}
+
+#custom-menu {
+    color: @bg;
+    background-color: @fg;
+    padding: 0px 7px;
+    margin: 5px 20px;
+}
